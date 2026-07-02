@@ -29,8 +29,9 @@ body {
   font-size: 17px;
   line-height: 1.6;
   color: var(--ink);
-  /* Градиент «на глубину» — один на всю страницу */
-  background: linear-gradient(180deg, #1d3663 0%, var(--navy-700) 14%, var(--navy-800) 42%, var(--navy-900) 72%, var(--navy-950) 100%);
+  /* Градиент «на глубину» — один плавный на всю страницу,
+     без резких полос между блоками */
+  background: linear-gradient(180deg, #1b3260 0%, #152a51 18%, #0f2043 38%, #0a1730 58%, #060e20 78%, #030812 100%);
   overflow-x: hidden;
 }
 
@@ -253,7 +254,7 @@ img { max-width: 100%; display: block; }
   inset: 0;
   background:
     linear-gradient(90deg, rgba(10, 20, 40, 0.72) 0%, rgba(10, 20, 40, 0.45) 55%, rgba(10, 20, 40, 0.25) 100%),
-    linear-gradient(180deg, rgba(10, 20, 40, 0.55) 0%, rgba(10, 20, 40, 0.1) 40%, rgba(21, 39, 74, 0.96) 100%);
+    linear-gradient(180deg, rgba(10, 20, 40, 0.55) 0%, rgba(10, 20, 40, 0.1) 40%, rgba(21, 42, 81, 0.97) 100%);
 }
 /* Лучи света с поверхности */
 .hero-rays {
@@ -269,27 +270,39 @@ img { max-width: 100%; display: block; }
   from { transform: translateX(-2.5%); opacity: 0.8; }
   to   { transform: translateX(2.5%); opacity: 1; }
 }
-/* Пузырьки */
+/* Пузырьки — фиксированный слой на весь экран, поднимаются
+   снизу вверх на любой «глубине» страницы */
+.bubbles {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
 .bubbles span {
   position: absolute;
   bottom: -60px;
-  border: 1.5px solid rgba(238, 242, 250, 0.18);
+  border: 1.5px solid rgba(238, 242, 250, 0.16);
   border-radius: 50%;
   animation: bubble linear infinite;
 }
-.bubbles span:nth-child(1) { left: 8%;  width: 10px; height: 10px; animation-duration: 11s; }
-.bubbles span:nth-child(2) { left: 18%; width: 18px; height: 18px; animation-duration: 15s; animation-delay: 2s; }
-.bubbles span:nth-child(3) { left: 31%; width: 7px;  height: 7px;  animation-duration: 9s;  animation-delay: 5s; }
-.bubbles span:nth-child(4) { left: 46%; width: 13px; height: 13px; animation-duration: 13s; animation-delay: 1s; }
-.bubbles span:nth-child(5) { left: 60%; width: 9px;  height: 9px;  animation-duration: 10s; animation-delay: 4s; }
-.bubbles span:nth-child(6) { left: 72%; width: 20px; height: 20px; animation-duration: 17s; animation-delay: 3s; }
-.bubbles span:nth-child(7) { left: 84%; width: 11px; height: 11px; animation-duration: 12s; animation-delay: 6s; }
-.bubbles span:nth-child(8) { left: 93%; width: 8px;  height: 8px;  animation-duration: 9.5s; animation-delay: 1.5s; }
+.bubbles span:nth-child(1)  { left: 4%;  width: 10px; height: 10px; animation-duration: 11s; }
+.bubbles span:nth-child(2)  { left: 13%; width: 18px; height: 18px; animation-duration: 15s; animation-delay: 2s; }
+.bubbles span:nth-child(3)  { left: 22%; width: 7px;  height: 7px;  animation-duration: 9s;  animation-delay: 5s; }
+.bubbles span:nth-child(4)  { left: 31%; width: 13px; height: 13px; animation-duration: 13s; animation-delay: 1s; }
+.bubbles span:nth-child(5)  { left: 40%; width: 9px;  height: 9px;  animation-duration: 10s; animation-delay: 7s; }
+.bubbles span:nth-child(6)  { left: 49%; width: 16px; height: 16px; animation-duration: 17s; animation-delay: 3s; }
+.bubbles span:nth-child(7)  { left: 58%; width: 11px; height: 11px; animation-duration: 12s; animation-delay: 6s; }
+.bubbles span:nth-child(8)  { left: 67%; width: 8px;  height: 8px;  animation-duration: 9.5s; animation-delay: 1.5s; }
+.bubbles span:nth-child(9)  { left: 75%; width: 14px; height: 14px; animation-duration: 14s; animation-delay: 4.5s; }
+.bubbles span:nth-child(10) { left: 83%; width: 6px;  height: 6px;  animation-duration: 8.5s; animation-delay: 8s; }
+.bubbles span:nth-child(11) { left: 90%; width: 19px; height: 19px; animation-duration: 16s; animation-delay: 0.5s; }
+.bubbles span:nth-child(12) { left: 96%; width: 9px;  height: 9px;  animation-duration: 10.5s; animation-delay: 5.5s; }
 @keyframes bubble {
   0%   { transform: translateY(0) translateX(0); opacity: 0; }
   8%   { opacity: 1; }
   92%  { opacity: 1; }
-  100% { transform: translateY(-105vh) translateX(24px); opacity: 0; }
+  100% { transform: translateY(-108vh) translateX(24px); opacity: 0; }
 }
 
 .hero-inner { position: relative; }
@@ -379,11 +392,6 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Секции ---------- */
 .section { padding: 110px 0; position: relative; }
-.section--deeper {
-  background: rgba(5, 10, 22, 0.35);
-  border-top: 1px solid rgba(238, 242, 250, 0.05);
-  border-bottom: 1px solid rgba(238, 242, 250, 0.05);
-}
 
 .section-label {
   display: inline-block;
@@ -420,7 +428,7 @@ img { max-width: 100%; display: block; }
   background: rgba(238, 242, 250, 0.045);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 30px 26px;
+  overflow: hidden;
   transition: transform 0.25s, border-color 0.25s, background 0.25s;
 }
 .card:hover {
@@ -428,23 +436,19 @@ img { max-width: 100%; display: block; }
   border-color: rgba(255, 241, 0, 0.35);
   background: rgba(238, 242, 250, 0.07);
 }
-.card-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 58px; height: 58px;
-  border-radius: 16px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  margin-bottom: 22px;
+.card-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
 }
 .card h3 {
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 10px;
+  padding: 18px 20px;
+  margin: 0;
 }
-.card p { font-size: 15px; color: var(--muted); line-height: 1.55; }
 
 /* ---------- Почему мы ---------- */
 .why-grid {
