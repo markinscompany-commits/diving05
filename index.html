@@ -27,7 +27,6 @@
       <nav class="header-nav" aria-label="Основная навигация">
         <a href="#locations">Локации</a>
         <a href="#why">Почему мы</a>
-        <a href="#video">Видео</a>
         <a href="#price">Цена</a>
         <a href="#contacts">Контакты</a>
       </nav>
@@ -45,7 +44,6 @@
     <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация">
       <a href="#locations">Локации</a>
       <a href="#why">Почему мы</a>
-      <a href="#video">Видео</a>
       <a href="#price">Цена</a>
       <a href="#contacts">Контакты</a>
       <a href="tel:+79385040505" class="mobile-nav-phone">+7 938 504-05-05</a>
@@ -64,6 +62,10 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero-bg" aria-hidden="true">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video-poster.jpg">
+          <source src="assets/video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
         <div class="hero-rays"></div>
         <div class="bubbles">
           <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
@@ -84,12 +86,6 @@
           <a href="tel:+79385040505" class="btn btn--ghost btn--lg">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Позвонить
-          </a>
-          <a href="#video" class="hero-video-link">
-            <span class="hero-video-play">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14z"/></svg>
-            </span>
-            Смотреть видео
           </a>
         </div>
         <div class="hero-stats reveal">
@@ -189,28 +185,8 @@
       </div>
     </section>
 
-    <!-- Видео -->
-    <section class="section" id="video">
-      <div class="container video-layout">
-        <div class="video-text">
-          <span class="section-label reveal">Как это выглядит</span>
-          <h2 class="section-title reveal">Одна минута <span class="accent">из-под воды</span></h2>
-          <p class="section-sub reveal">Реальное погружение с нашими гостями — без монтажа и фильтров. Так выглядит обычный день в «Дайвинг 05».</p>
-          <a href="https://wa.me/79385040505" target="_blank" rel="noopener" class="btn btn--accent reveal">Хочу так же</a>
-        </div>
-        <div class="video-frame reveal">
-          <video id="diveVideo" poster="assets/video-poster.jpg" preload="none" playsinline>
-            <source src="assets/video.mp4" type="video/mp4">
-          </video>
-          <button class="video-play" id="videoPlay" aria-label="Смотреть видео">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14z"/></svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
     <!-- Цена -->
-    <section class="section section--deeper" id="price">
+    <section class="section" id="price">
       <div class="container price-inner">
         <span class="section-label reveal">Стоимость</span>
         <div class="price-big reveal">от <strong>6 000 ₽</strong></div>

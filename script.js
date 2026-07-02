@@ -53,18 +53,6 @@
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
 
-  // --- Видео: играть по клику ---
-  var video = document.getElementById('diveVideo');
-  var playBtn = document.getElementById('videoPlay');
-  playBtn.addEventListener('click', function () {
-    playBtn.classList.add('hidden');
-    video.setAttribute('controls', '');
-    video.play();
-  });
-  video.addEventListener('pause', function () {
-    if (video.currentTime === 0 || video.ended) playBtn.classList.remove('hidden');
-  });
-
   // --- Куки-баннер ---
   var KEY = 'diving05-cookie-consent-v1';
   var banner = document.getElementById('cookieBanner');

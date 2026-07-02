@@ -236,6 +236,25 @@ img { max-width: 100%; display: block; }
   inset: 0;
   pointer-events: none;
 }
+/* Фоновое видео: вертикальный ролик кропится по центру,
+   дайверы в кадре — чуть ниже середины */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+/* Затемнение поверх видео, чтобы текст читался,
+   а низ плавно уходил в цвет страницы */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(10, 20, 40, 0.72) 0%, rgba(10, 20, 40, 0.45) 55%, rgba(10, 20, 40, 0.25) 100%),
+    linear-gradient(180deg, rgba(10, 20, 40, 0.55) 0%, rgba(10, 20, 40, 0.1) 40%, rgba(21, 39, 74, 0.96) 100%);
+}
 /* Лучи света с поверхности */
 .hero-rays {
   position: absolute;
@@ -314,32 +333,6 @@ img { max-width: 100%; display: block; }
   gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 64px;
-}
-
-.hero-video-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--ink);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.hero-video-link:hover { color: var(--accent); }
-.hero-video-play {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: rgba(238, 242, 250, 0.08);
-  border: 1px solid var(--line);
-  transition: background 0.2s, border-color 0.2s;
-}
-.hero-video-link:hover .hero-video-play {
-  background: var(--accent-soft);
-  border-color: rgba(255, 241, 0, 0.4);
 }
 
 .hero-stats {
@@ -482,49 +475,6 @@ img { max-width: 100%; display: block; }
   margin-bottom: 7px;
 }
 .why-item p { font-size: 15.5px; color: var(--muted); }
-
-/* ---------- Видео ---------- */
-.video-layout {
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 70px;
-  align-items: center;
-}
-.video-text .section-sub { margin-bottom: 34px; }
-.video-frame {
-  position: relative;
-  border-radius: 26px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
-  aspect-ratio: 9 / 16;
-  background: var(--navy-900);
-}
-.video-frame video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.video-play {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 78px; height: 78px;
-  border-radius: 50%;
-  border: none;
-  background: var(--accent);
-  color: var(--navy-800);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 10px 40px rgba(255, 241, 0, 0.35);
-}
-.video-play svg { margin-left: 4px; }
-.video-play:hover { transform: scale(1.08); }
-.video-play.hidden { display: none; }
 
 /* ---------- Цена ---------- */
 .price-inner { text-align: center; }
@@ -721,8 +671,6 @@ a.contact-row:hover { background: rgba(238, 242, 250, 0.05); }
 /* ---------- Адаптив ---------- */
 @media (max-width: 1000px) {
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
-  .video-layout { grid-template-columns: 1fr; gap: 46px; }
-  .video-frame { max-width: 360px; margin: 0 auto; width: 100%; }
   .contacts-layout { grid-template-columns: 1fr; }
   .header-nav { display: none; }
 }
